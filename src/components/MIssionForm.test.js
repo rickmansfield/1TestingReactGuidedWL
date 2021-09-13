@@ -55,6 +55,7 @@ test("Executes getData if button is clicked", ()=> {
 
     //Arrange: Setup our component code.
     render(<MissionForm isFetchingData={false} getData={fakeGetData}/>);
+    
     //Act:
     // - Get our button
     const button = screen.queryByRole("button");
@@ -67,7 +68,9 @@ test("Executes getData if button is clicked", ()=> {
     //Assert
     // - Does our getData function execute
     expect(fakeGetData.mock.results.length === 3).toBeTruthy();
+    expect(fakeGetData.mock.calls.length === 3).toBeTruthy();//same as previous line. Just stated another way.
     expect(fakeGetData.mock.results.length).toBe(3);//same as previous line. Just stated another way. 
-    expect(fakeGetData.mock.results).toHaveLength(3);
-    expect(fakeGetData).toBeCalledTimes(3);
+    expect(fakeGetData.mock.calls.length).toBe(3);//same as previous line. Just stated another way.
+    expect(fakeGetData.mock.results).toHaveLength(3);//same as previous line. Just stated another way.
+    expect(fakeGetData).toBeCalledTimes(3);//same as previous line. Just stated another way.
 });

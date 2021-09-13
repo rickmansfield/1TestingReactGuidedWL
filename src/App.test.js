@@ -32,8 +32,9 @@ test("when button is clicked, gets missions", async ()=> {
     render(<App/>);
 
     //Act:
+    // find Missions
     const missionForm = document.querySelector('#missionForm');
-
+      //Find Button & Click it
     const button = within(missionForm).getByRole("button");
     userEvent.click(button);
 
@@ -44,6 +45,7 @@ test("when button is clicked, gets missions", async ()=> {
     //     console.log(missions);
     //      return(missions[0])
     // }).then(mission => {
+        //console.log('here');
         //return(mission.mission_id);
     //}).then(id=>{
         //return(id);
