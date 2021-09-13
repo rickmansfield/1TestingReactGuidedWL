@@ -49,19 +49,22 @@ test("Executes getData if button is clicked", ()=> {
     const fakeGetData = jest.fn();
 
     //Arrange: Setup our component code.
-    render(<MissionForm isFetchingData={false} />);
+    render(<MissionForm isFetchingData={false} getData={fakeGetData}/>);
     //Act:
     // - Get our button
     const button = screen.queryByRole("button");
+    
 
     // - Click our button
+    userEvent.click(button);
+    userEvent.click(button);
     userEvent.click(button);
     console.log('MissionForm.tes.js fakeGetData = jset.fn()', fakeGetData.mock);
 
     //Assert
     // - Does our getData function execute
-    // expect(fakeGetData.mock.results.length === 1).toBeTruthy();
-    // expect(fakeGetData.mock.results.length).toBe(1);
-    // expect(fakeGetData.mock.results).toHaveLength(1);
-    // expect(fakeGetData).toBeCalledTimes(1);
+    expect(fakeGetData.mock.results.length === 3).toBeTruthy();
+    expect(fakeGetData.mock.results.length).toBe(3);
+    expect(fakeGetData.mock.results).toHaveLength(3);
+    expect(fakeGetData).toBeCalledTimes(3);
 });
