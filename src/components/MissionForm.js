@@ -1,7 +1,6 @@
 import React from "react";
 
 const MissionForm = props => {
-  
   const handleGetData = e => {
     e.preventDefault();
     console.log('MissionForm.js ln:4 props', props);

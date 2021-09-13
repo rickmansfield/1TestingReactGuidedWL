@@ -18,6 +18,7 @@ test("Displays message if isFetchingData is true", ()=> {
     const message = screen.queryByText(/we are fetching data/i);
     //2. Attempt to find button
     const button = screen.queryByRole("button");
+    console.log('button', button);
     
     //Assert:
     //1. expect message to exist.
@@ -30,6 +31,10 @@ test("Displays message if isFetchingData is true", ()=> {
 
     //2. expect button NOT to exist.
     expect(button).not.toBeInTheDocument();
+    //alternatives
+    expect(button).toBeNull();
+    expect(button).toBeFalsy();
+    expect(button).not.toBeTruthy();
 });
 
 test("Displays button if isFetchingData is false", ()=> {
@@ -53,8 +58,6 @@ test("Executes getData if button is clicked", ()=> {
     //Act:
     // - Get our button
     const button = screen.queryByRole("button");
-    
-
     // - Click our button
     userEvent.click(button);
     userEvent.click(button);
@@ -64,7 +67,7 @@ test("Executes getData if button is clicked", ()=> {
     //Assert
     // - Does our getData function execute
     expect(fakeGetData.mock.results.length === 3).toBeTruthy();
-    expect(fakeGetData.mock.results.length).toBe(3);
+    expect(fakeGetData.mock.results.length).toBe(3);//same as previous line. Just stated another way. 
     expect(fakeGetData.mock.results).toHaveLength(3);
     expect(fakeGetData).toBeCalledTimes(3);
 });
